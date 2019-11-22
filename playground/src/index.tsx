@@ -11,15 +11,18 @@ import { Alert } from "../../dist/alert";
 import { AlertLink } from "../../dist/alert-link";
 import { AlertHeading } from "../../dist/alert-heading";
 import { AlertCloseButton } from "../../dist/alert-close-button";
+import { Badge } from "../../dist/badge";
 
 st.render(
     <div class="container-fluid">
         <Alert type="secondary" dismissable={true} fade={true} show={true}>
             <AlertHeading>Nice</AlertHeading>
-            A simple secondary alert with <AlertLink href="https://www.springtype.org">an example link</AlertLink>. Give it a click if you like.
-        
+            A simple secondary alert with <AlertLink href="https://www.springtype.org">an example link</AlertLink>. Give it a click if you like.   
             <AlertCloseButton />
         </Alert>
+
+        <Badge tag="a" href="https://www.springtype.org" type="info" pill={true}>SpringType</Badge>
+
         <br />
         <Button type='primary' onClick={() => { console.log('clicked') }}>
             <FA icon="plus" /> Primary

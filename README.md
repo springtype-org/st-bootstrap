@@ -47,6 +47,7 @@ The following components are already implemented:
 - [ ] Tables
 - [ ] Figures
 - [x] Alerts
+- [x] Badge
 - [ ] Breadcrumb
 - [x] Button
 - [ ] Button group
