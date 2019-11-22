@@ -16,6 +16,11 @@
 To use Bootstrap 4 components, just include the components you need:
 
 ```ts
+// import jQuery, Bootstrap and wire it up
+import * as $ from "jquery";
+(window as any).$ = $;
+import "bootstrap";
+
 import { st } from 'springtype';
 import { FA } from 'st-font-awesome';
 import { Button } from 'st-bootstrap';
@@ -41,7 +46,7 @@ The following components are already implemented:
 - [ ] Images
 - [ ] Tables
 - [ ] Figures
-- [ ] Alerts
+- [x] Alerts
 - [ ] Breadcrumb
 - [x] Button
 - [ ] Button group

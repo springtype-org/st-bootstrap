@@ -1,11 +1,25 @@
+import * as $ from "jquery";
+(window as any).$ = $;
+import "bootstrap";
+
 import { st } from "springtype/core";
 import { tsx } from "springtype/web/vdom";
 import { FA } from "st-font-awesome";
 
 import { Button } from "../../dist/button";
+import { Alert } from "../../dist/alert";
+import { AlertLink } from "../../dist/alert-link";
+import { AlertHeading } from "../../dist/alert-heading";
+import { AlertCloseButton } from "../../dist/alert-close-button";
 
 st.render(
     <div class="container-fluid">
+        <Alert type="secondary" dismissable={true} fade={true} show={true}>
+            <AlertHeading>Nice</AlertHeading>
+            A simple secondary alert with <AlertLink href="https://www.springtype.org">an example link</AlertLink>. Give it a click if you like.
+        
+            <AlertCloseButton />
+        </Alert>
         <br />
         <Button type='primary' onClick={() => { console.log('clicked') }}>
             <FA icon="plus" /> Primary

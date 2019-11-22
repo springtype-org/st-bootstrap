@@ -15,9 +15,7 @@ export interface IButtonAttrs {
 @component
 export class Button extends st.component<IButtonAttrs> {
 
-    tag: "button";
-
-    class: ["btn"];
+    tag: string = "button";
 
     @attr
     size?: ButtonSizes;
