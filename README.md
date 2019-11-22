@@ -27,6 +27,10 @@ st.render(
 );
 ```
 
+...which will result in:
+
+<img src="result.png" height="150px" />
+
 <h2 align="center">Roadmap</h2>
 
 The following components are already implemented:
