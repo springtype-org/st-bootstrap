@@ -24,6 +24,7 @@ export class Index extends st.component {
 
 st.run(async() => {
 
+    // if you plan to import 'boostrap' JS and it's dependencies (jQuery, popper.js) in the application JS bundle
     // await importBootstrap();
 
     setupBootstrapComponent('tooltip');
