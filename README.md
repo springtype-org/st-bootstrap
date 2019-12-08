@@ -7,7 +7,10 @@ Unlike other modern frontend frameworks, SpringType *doesn't need any special wr
 
 This means, you can just use the standard Bootstrap 4 SCSS/CSS, it's HTML and JS plugins like we did back in the good old days - but with components and VDOM :-)
 
-<img src="preview.png" />
+<a href="https://springtype-org.github.io/st-bootstrap/" target="_blank">
+  Live Demo
+  <img src="preview.png" />
+</a>
 
 You can find a working integration example in the `playground` folder.
 
