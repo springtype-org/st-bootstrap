@@ -7573,10 +7573,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-beta.10:
-  version "2.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.10.tgz#97a267dec75ffc2d076fb4b51126cefd3d29a462"
-  integrity sha512-7opx4kmDbESxtPUd6fD0xTChPdZhTStVXQE/+0a8Hp8SHsq1jAT5u1c+JiuA+IJgLuZkQG5OVMsdNKdV8c0WEQ==
+springtype@^2.0.0-beta.15:
+  version "2.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.15.tgz#a9c50c11d8c01da932ec041dc09297a907a590f8"
+  integrity sha512-4G1ybc/hKRMmG8zackbhQ3tMZ6To6afg7DAT3XHdbq9WNhLL+B4JbcsSHMR/fMgQR/fqEozBWLujeRoOgFSDSg==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"

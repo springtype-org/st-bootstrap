@@ -1,75 +1,89 @@
 <h1 align="center">Bootstrap 4 for SpringType</h2>
 
-> Easy to use, flexible, versatile and high performant components to build websites and PWA's
-> Based on the official Bootstrap implementation: getbootstrap.com
+> "How to use Bootstrap 4 with SpringType?"
 
-<h2 align="center">Setup</h2>
+SpringType comes with a lazy, fault-tolerant VDOM implementation that allows you to use standard HTML + CSS.
+Unlike other modern frontend frameworks, SpringType *doesn't need any special wrapper component libraries*.
 
-    yarn add st-bootstrap bootstrap jquery
+This means, you can just use the standard Bootstrap 4 SCSS/CSS, it's HTML and JS plugins like we did back in the good old days - but with components and VDOM :-)
 
-- Bootstrap 4 for SCSS and JS support
-- jQuery for JS support
-- Optionally: `yarn add st-font-awesome` for Font Awesome 5 support
+<img src="preview.png" />
 
-<h2 align="center">Use</h2>
+You can find a working integration example in the `playground` folder.
 
-To use Bootstrap 4 components, just include the components you need:
+<h2 align="center">Scaffolding</h2>
+
+For your convenience, we've created a scaffolding template for SpringType / Bootstrap 4 projects.
+To use it, please install the SpringType scaffolding CLI `st-create`:
+
+    yarn add global st-create
+
+Then simply run:
+
+    st-create project st-bootstrap
+
+...and seconds later, a SpringType / Bootstrap 4 application shall be created for you.
+
+<h2 align="center">Manual integration guide</h2>
+
+If you don't want to use `st-create`, the process of integrating Bootstrap 4 in a 
+SpringType projects (or even any TypeScript project), is quite straigt forward:
+
+Install these dependencies:
+
+    npm i bootstrap jquery
+OR:
+    yarn add bootstrap jquery
+
+- jQuery is a Bootstrap 4 dependency
+- Bootstrap 4 comes with the SCSS (SASS) stylesheets and the jQuery plugins for interactive components
+
+Make sure to initialize both dependencies at the very beginning of your app (e.g. in `src/index.tsx`):
 
 ```ts
 // import jQuery, Bootstrap and wire it up
 import * as $ from "jquery";
 (window as any).$ = $;
 import "bootstrap";
-
-import { st } from 'springtype';
-import { FA } from 'st-font-awesome';
-import { Button } from 'st-bootstrap';
-
-st.render(
-  <Button type='primary' onClick={() => { console.log('clicked') }}>
-    <FA icon="plus" /> Primary
-  </Button>
-);
 ```
 
-...which will result in:
+We also suggest, to create an SCSS file to integrate the Bootstrap 4 SCSS with custom themeing support.
+Create a `theme.scss` in your `src` folder:
 
-<img src="result.png" height="150px" />
+```scss
+$theme-colors: (
+    "primary": #1a6da9,
+    "secondary": #2a863c,
+);
 
-<h2 align="center">Roadmap</h2>
+@import "bootstrap/scss/bootstrap";
+```
 
-The following components are already implemented:
+To transpile the SCSS file to CSS, just activate the SASS processing feature of `st-start` by creating or modfiying the file `st.config.js`. Add the key `staticStyleEntryPoints`:
 
-- [ ] Grid
-- [ ] Typography
-- [ ] Code
-- [ ] Images
-- [ ] Tables
-- [ ] Figures
-- [x] Alerts
-- [x] Badge
-- [ ] Breadcrumb
-- [x] Button
-- [ ] Button group
-- [ ] Card
-- [ ] Carousel
-- [ ] Collapse
-- [ ] Dropdowns
-- [ ] Forms
-- [ ] Input group
-- [ ] Jumbotron
-- [ ] List group
-- [ ] Media object
-- [ ] Modal
-- [ ] Navs
-- [ ] Navbar
-- [ ] Pagination
-- [ ] Popovers
-- [ ] Progress
-- [ ] Scrollspy
-- [ ] Spinners
-- [ ] Toasts
-- [ ] Tooltips
+```js
+module.exports = {
+    staticStyleEntryPoints: {
+        'src/theme.scss': 'dist/theme.css'
+    },
+};
+```
+
+Finally, import the resulting `dist/theme.scss` CSS file in the `<head>` section of your `src/index.html` file:
+
+```html
+<head>
+
+  <!-- added this for Font Awesome icon support -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+  <!-- just using the most recent style globally -->
+  <link href="../dist/theme.css" rel="stylesheet">
+
+</head>
+```
+
+Most Bootstrap apps also use Font Awesome, so we recommend importing Font Awesome as well.
 
 <h2 align="center">Maintainers</h2>
 

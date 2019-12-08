@@ -1,85 +1,36 @@
-import * as $ from "jquery";
-(window as any).$ = $;
-import "bootstrap";
+// please keep this as the first import
+import "./setup-bootstrap";
 
 import { st } from "springtype/core";
 import { tsx } from "springtype/web/vdom";
-import { FA } from "st-font-awesome";
+import { component } from "springtype/web/component";
+import { RouteList, Route, PATH_START, PATH_WILDCARD } from "springtype/web/router";
 
-import { Button } from "../../dist/button";
-import { Alert } from "../../dist/alert";
-import { AlertLink } from "../../dist/alert-link";
-import { AlertHeading } from "../../dist/alert-heading";
-import { AlertCloseButton } from "../../dist/alert-close-button";
-import { Badge } from "../../dist/badge";
+import { PricingPage, PricingPageRoute } from "./page/pricing";
+import { SigninPage, SigninPageRoute } from "./page/signin";
+import { FeaturesPage, FeaturesPageRoute } from "./page/features";
+import { CheckoutPage, CheckoutPageRoute } from "./page/checkout";
 
-st.render(
-    <div class="container-fluid">
-        <Alert type="secondary" dismissable={true} fade={true} show={true}>
-            <AlertHeading>Nice</AlertHeading>
-            A simple secondary alert with <AlertLink href="https://www.springtype.org">an example link</AlertLink>. Give it a click if you like.   
-            <AlertCloseButton />
-        </Alert>
+@component
+export class Index extends st.component {
+    render() {
+        return <RouteList>
+            <Route path={[FeaturesPageRoute, PATH_START, PATH_WILDCARD]}><FeaturesPage /></Route>
+            <Route path={PricingPageRoute}><PricingPage /></Route>
+            <Route path={[SigninPageRoute]}><SigninPage /></Route>
+            <Route path={[CheckoutPageRoute]}><CheckoutPage /></Route>
+        </RouteList>
+    }
+}
 
-        <Badge tag="a" href="https://www.springtype.org" type="info" pill={true}>SpringType</Badge>
+// trigger the initial render to <body>
+st.render(<Index />);
 
-        <br />
-        <Button type='primary' onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='secondary' onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='danger' onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='primary' outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='secondary' outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='danger' outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='link' size="lg" outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='warning' size="sm" outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='info' size="xs" outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <br />
-        <Button type='dark' size="block" outline={true} onClick={() => { console.log('clicked') }}>
-            <FA icon="plus" /> Primary
-        </Button>
-        <br />
-        <div style={{
-            background: '#333',
-            padding: 10
-        }}>
-            <Button type='light' size="block" outline={true} onClick={() => { console.log('clicked') }}>
-                <FA icon="plus" /> Primary
-            </Button>
-        </div>
-    </div>
-);
+(async () => {
+    await st.dom.isReady();
+
+    // some bootstrap initialization
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+})();
