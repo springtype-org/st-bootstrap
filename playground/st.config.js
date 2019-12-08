@@ -3,6 +3,6 @@ module.exports = {
     indexHTMLTemplate: 'src/index.html',
     outputPath: '../docs',
     staticStyleEntryPoints: {
-        'src/bootstrap.scss': 'dist/bootstrap.css'
+        'src/bootstrap.scss': '../docs/bootstrap.css'
     },
 };
