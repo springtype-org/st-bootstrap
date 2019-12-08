@@ -1,15 +1,14 @@
-// please keep this as the first import
-import "./setup-bootstrap";
-
 import { st } from "springtype/core";
 import { tsx } from "springtype/web/vdom";
 import { component } from "springtype/web/component";
 import { RouteList, Route, PATH_START, PATH_WILDCARD } from "springtype/web/router";
-
 import { PricingPage, PricingPageRoute } from "./page/pricing";
 import { SigninPage, SigninPageRoute } from "./page/signin";
 import { FeaturesPage, FeaturesPageRoute } from "./page/features";
 import { CheckoutPage, CheckoutPageRoute } from "./page/checkout";
+
+// use import { setup } from "st-bootstrap";
+import { setupBootstrapComponent } from "../../dist/setupBootstrapComponent";
 
 @component
 export class Index extends st.component {
@@ -23,14 +22,12 @@ export class Index extends st.component {
     }
 }
 
-// trigger the initial render to <body>
-st.render(<Index />);
+st.run(async() => {
 
-(async () => {
-    await st.dom.isReady();
+    // await importBootstrap();
 
-    // some bootstrap initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-})();
+    setupBootstrapComponent('tooltip');
+
+    // trigger the initial render to <body>
+    st.render(<Index />);
+});

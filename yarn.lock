@@ -5916,7 +5916,7 @@ pkg-up@2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-popper.js@^1.14.1:
+popper.js@^1.14.1, popper.js@^1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
   integrity sha512-+G+EkOPoE5S/zChTpmBSSDYmhXJ5PsW8eMhH8cP/CQHMFPBG/kC9Y5IIw6qNYgdJ+/COf0ddY2li28iHaZRSjw==
@@ -7573,10 +7573,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-beta.15:
-  version "2.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.15.tgz#a9c50c11d8c01da932ec041dc09297a907a590f8"
-  integrity sha512-4G1ybc/hKRMmG8zackbhQ3tMZ6To6afg7DAT3XHdbq9WNhLL+B4JbcsSHMR/fMgQR/fqEozBWLujeRoOgFSDSg==
+springtype@^2.0.0-beta.21:
+  version "2.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.21.tgz#64056931d0abd255da455826243d9e4d8debc238"
+  integrity sha512-+dwOki58mb67m0acyMKpyc/1FDQ5bDqTJ2h9nA471u5Qlw354iOT/RSJLqlfwxOY6b1urzOT3MEvBUmy+uMCUA==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"

@@ -7,11 +7,13 @@
   "scripts": {
     "prebuild": "st-rm-rf dist",
     "build": "tsc",
+    "push": "git push origin `git subtree split --prefix playground/dist master`:gh-pages --force",
     "postbuild": "st-cp package.json README.md LICENSE dist"
   },
   "peerDependencies": {
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
   },
   "author": "Aron Homberg <info@aron-homberg.de>",
   "license": "MIT",
@@ -35,7 +37,7 @@
     "raw-loader": "^3.1.0",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^8.0.0",
-    "springtype": "^2.0.0-beta.15",
+    "springtype": "^2.0.0-beta.21",
     "st-cp": "^2.0.0-alpha.4",
     "st-rm-rf": "^2.0.0-alpha.8",
     "st-start": "^2.0.0-beta.27",

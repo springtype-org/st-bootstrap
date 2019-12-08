@@ -27,25 +27,68 @@ Then simply run:
 <h2 align="center">Manual integration guide</h2>
 
 If you don't want to use `st-create`, the process of integrating Bootstrap 4 in a 
-SpringType projects (or even any TypeScript project), is quite straigt forward:
+SpringType projects (or even any TypeScript project), is quite straigt forward.
+
+You can choose to integrate third-party libraries via CDN or import them in JS 
+to include them into the application JS bundle.
+
+<h3 align="center">Importing third-party JS in application JS bundle</h2>
 
 Install these dependencies:
 
-    npm i bootstrap jquery
+    npm i st-bootstrap bootstrap jquery popper.js
 OR:
-    yarn add bootstrap jquery
+    yarn add st-bootstrap bootstrap jquery popper.js
 
 - jQuery is a Bootstrap 4 dependency
 - Bootstrap 4 comes with the SCSS (SASS) stylesheets and the jQuery plugins for interactive components
+- popper.js for 
 
-Make sure to initialize both dependencies at the very beginning of your app (e.g. in `src/index.tsx`):
+Make sure to actually import these dependencies (e.g. in `src/index.tsx`):
 
 ```ts
-// import jQuery, Bootstrap and wire it up
-import * as $ from "jquery";
-(window as any).$ = $;
-import "bootstrap";
+// import jQuery, Bootstrap, popper.js
+import { importBootstrap } from "st-boostrap";
+
+st.run(async() => {
+
+    // dynamically imports the dependencies jquery, bootstrap and popper.js
+    await importBootstrap();
+
+    // enabling SpringType support for Bootstrap 4 tooltip components 
+    setupBootstrapComponent('tooltip');
+
+    st.render(<YourAppIndex />);
+});
 ```
+
+<h3 align="center">Importing third-party JS using a CDN</h2>
+
+The other option is to integrate Bootstrap 4 and it's dependencies in the `<head>` of your `index.html` just like described in the official Bootstrap 4 docs:
+
+```html
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+```
+
+Make sure *not* to import and call `importBootstrap()` then.
+
+<h2 align="center">Bootstrap 4 JS Components</h2>
+
+Some components require an initialization (e.g. tooltips). To do this, just implement the lifecycle method `onAfterInitialRender` just like described in the official Bootstrap 4 docs:
+
+```ts
+  onAfterInitialRender() {
+
+    // tooltip integration
+    $(() => {
+        $('[data-toggle="tooltip"]', this.el).tooltip()
+    });
+  }
+```
+
+<h2 align="center">Custom theming using Sass</h2>
 
 We also suggest, to create an SCSS file to integrate the Bootstrap 4 SCSS with custom themeing support.
 Create a `theme.scss` in your `src` folder:

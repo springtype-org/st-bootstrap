@@ -69,4 +69,12 @@ export class PricingPage extends st.component {
             </template>
         </Layout>;
     }
+
+    onAfterInitialRender() {
+
+        // some bootstrap initialization
+        $(() => {
+            $('[data-toggle="tooltip"]', this.el).tooltip()
+        });
+    }
 }
