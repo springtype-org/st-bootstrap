@@ -23,9 +23,9 @@ To use it, please install the SpringType scaffolding CLI `st-create`:
 
 Then simply run:
 
-    st-create project st-bootstrap
+    st-create -c project -t bootstrap-4 -n MyBootstrapProject
 
-...and seconds later, a SpringType / Bootstrap 4 application shall be created for you.
+...and seconds later, a SpringType / Bootstrap 4 application will be created for you.
 
 <h2 align="center">Manual integration guide</h2>
 
