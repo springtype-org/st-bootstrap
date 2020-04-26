@@ -7,8 +7,9 @@ import { SigninPage, SigninPageRoute } from "./page/signin";
 import { FeaturesPage, FeaturesPageRoute } from "./page/features";
 import { CheckoutPage, CheckoutPageRoute } from "./page/checkout";
 
+import "./bootstrap.scss";
+
 // use import { setup } from "st-bootstrap";
-import { setupBootstrapComponent } from "../../dist/setupBootstrapComponent";
 
 @component
 export class Index extends st.component {
@@ -26,8 +27,6 @@ st.run(async() => {
 
     // if you plan to import 'boostrap' JS and it's dependencies (jQuery, popper.js) in the application JS bundle
     // await importBootstrap();
-
-    setupBootstrapComponent('tooltip');
 
     // trigger the initial render to <body>
     st.render(<Index />);
